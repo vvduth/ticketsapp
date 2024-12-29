@@ -8,11 +8,11 @@ const port: number = 3000;
 app.use(bodyParser.json());
 
 // Basic route
-app.get('/', (req: Request, res: Response) => {
+app.get('/api/users/currentuser', (req: Request, res: Response) => {
     res.send('Hello, world!');
 });
 
 // Start the server
 app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
+    console.log(`Server is running popo on http://localhost:${port}`);
 });
