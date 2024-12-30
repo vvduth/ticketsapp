@@ -6,7 +6,7 @@ import { singInRouter } from './routes/signin';
 import { signoutRouter } from './routes/signout';
 import { errorHandler } from './middlewares/error-handler';
 import { NotFoundError } from './errors/not-found-error';
-
+import 'express-async-errors'
 
 const app: Application = express();
 const port: number = 3000;
