@@ -1,9 +1,8 @@
 export class DataBaseConnectionError extends Error {
 
-    reason:string = "";
+    reason:string = "Error connecting to database";
     constructor() {
         super();
-        this.reason = "Error connecting to database";
         // Only because we are extending a built in class
         Object.setPrototypeOf(this, DataBaseConnectionError.prototype);
     }

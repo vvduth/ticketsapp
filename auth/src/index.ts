@@ -18,7 +18,7 @@ app.use(signUprouter)
 app.use(singInRouter)
 app.use(signoutRouter)
 
-app.use(errorHandler)
+app.use(errorHandler as express.ErrorRequestHandler);
 
 
 // Start the server
