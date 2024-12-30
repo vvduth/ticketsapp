@@ -2,7 +2,7 @@ import express, { Application, Request, Response } from "express";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import { currentUserRouter } from "./routes/current-user";
-import { signUprouter } from "./routes/signup";
+import { signupRouter } from "./routes/signup";
 import { singInRouter } from "./routes/signin";
 import { signoutRouter } from "./routes/signout";
 import { errorHandler } from "./middlewares/error-handler";
@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 
 // Basic route
 app.use(currentUserRouter);
-app.use(signUprouter);
+app.use(signupRouter);
 app.use(singInRouter);
 app.use(signoutRouter);
 
