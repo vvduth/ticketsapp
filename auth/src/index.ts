@@ -5,6 +5,9 @@ import { signUprouter } from './routes/signup';
 import { singInRouter } from './routes/signin';
 import { signoutRouter } from './routes/signout';
 import { errorHandler } from './middlewares/error-handler';
+import { NotFoundError } from './errors/not-found-error';
+
+
 const app: Application = express();
 const port: number = 3000;
 
@@ -18,10 +21,14 @@ app.use(signUprouter)
 app.use(singInRouter)
 app.use(signoutRouter)
 
+app.all('*',  () => {
+    throw new NotFoundError();
+})
+
 app.use(errorHandler as express.ErrorRequestHandler);
 
 
 // Start the server
 app.listen(port, () => {
-    console.log(`Server is running popo on http://localhost:${port}`);
+    console.log(`Server is running  on http://localhost:${port}`);
 });
