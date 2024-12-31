@@ -11,7 +11,7 @@ import { errorHandler } from "./middlewares/error-handler";
 import { NotFoundError } from "./errors/not-found-error";
 import "express-async-errors";
 
-const app: Application = express();
+const app = express();
 app.set("trust proxy", true);
 const port: number = 3000;
 
