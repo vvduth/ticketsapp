@@ -8,7 +8,7 @@ process.env.JWT_KEY = 'asdfasdf';
 
   // start mongo memory server
   mongo = await MongoMemoryServer.create();
-  const mongoUri = await mongo.getUri();
+  const mongoUri =  mongo.getUri();
 
   await mongoose.connect(mongoUri, {});
 });
@@ -24,8 +24,9 @@ beforeEach(async () => {
   });
 
 afterAll(async () => {
+    await mongoose.connection.close();
   if (mongo) {
     await mongo.stop();
   }
-  await mongoose.connection.close();
+  
 });

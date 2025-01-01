@@ -17,7 +17,7 @@ app.set("trust proxy", true);
 
 // Middleware to parse JSON bodies
 app.use(bodyParser.json());
-app.use(cookieSession({ signed: false, secure: true }));
+app.use(cookieSession({ signed: false, secure: process.env.NODE_ENV !== "test" }));
 
 // Basic route
 app.use(currentUserRouter);
