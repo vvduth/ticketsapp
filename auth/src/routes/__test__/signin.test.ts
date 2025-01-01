@@ -1,8 +1,7 @@
 import request from "supertest";
 import { app } from "../../app";
 
-
-// it("fails when a email that does not exist is supplied", async () => {  
+// it("fails when a email that does not exist is supplied", async () => {
 //     await request(app).post("/api/users/signin").send({
 //         email: "dule@gmail.com",
 //         password: "password"
@@ -20,15 +19,22 @@ import { app } from "../../app";
 //     }).expect(400);
 // });
 
-it ("responds with a cookie when given valid credentials", async () => {   
-    await request(app).post("/api/users/signup").send({
-        email: "test@test.com",
-        password: "password"}).expect(201);
+it("responds with a cookie when given valid credentials", async () => {
+  await request(app)
+    .post("/api/users/signup")
+    .send({
+      email: "test@test.com",
+      password: "password",
+    })
+    .expect(201);
 
-    const response = await request(app).post("/api/users/signin").send({
-        email: "test@test.com",
-        password: "password"
-    }).expect(200);
+  const response = await request(app)
+    .post("/api/users/signin")
+    .send({
+      email: "test@test.com",
+      password: "password",
+    })
+    .expect(200);
 
-    expect(response.get("Set-Cookie")).toBeDefined();   
+  expect(response.get("Set-Cookie")).toBeDefined();
 });
