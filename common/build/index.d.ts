@@ -5,3 +5,4 @@ interface Ticket {
     date: Date;
 }
 declare const sampleTicket: Ticket;
+export default sampleTicket;
