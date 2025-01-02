@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "del /S /Q .\\build\\*",
+    "build": "npm run clean && tsc"
   },
   "keywords": [],
   "author": "",
@@ -13,5 +14,9 @@
     "@tikket4real/common": "file:",
     "common": "file:",
     "tikket4real": "file:"
+  },
+  "devDependencies": {
+    "del-cli": "^6.0.0",
+    "typescript": "^5.7.2"
   }
 }
