@@ -13,3 +13,5 @@ const sampleTicket: Ticket = {
 };
 
 console.log(sampleTicket);
+
+export default sampleTicket;
