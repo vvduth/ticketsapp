@@ -1,6 +1,6 @@
 import express, { Request, Response } from "express";
 import jwt from "jsonwebtoken";
-import { currentUser } from "../middlewares/current-user";
+import { currentUser } from "@tikket4real/common"
 const router = express.Router();
 
 router.get(

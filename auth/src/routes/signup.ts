@@ -2,9 +2,9 @@ import express, { Request, Response } from "express";
 import { body, validationResult } from "express-validator";
 import { User } from "../models/user";
 
-import { BadRequestError } from "../errors/bad-request-error";
+import { BadRequestError, validateRequest } from "@tikket4real/common";
 import jwt from "jsonwebtoken";
-import { validateRequest } from "../middlewares/validate-request";
+
 const router = express.Router();
 
 router.post(
