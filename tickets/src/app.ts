@@ -7,6 +7,7 @@ import { errorHandler, NotFoundError, currentUser } from "@tikket4real/common";
 import "express-async-errors";
 import { createTicketRouter } from "./routes/new";
 import { showTicketRouter } from "./routes/show";
+import { indexTicketsRouter } from "./routes";
 
 const app = express();
 app.set("trust proxy", true);
@@ -19,6 +20,7 @@ app.use(currentUser);
 // Basic route
 app.use(createTicketRouter)
 app.use(showTicketRouter)
+app.use(indexTicketsRouter)
 
 app.all("*", () => {
   throw new NotFoundError();
