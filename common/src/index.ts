@@ -1,17 +1,11 @@
-interface Ticket {
-    id: string;
-    title: string;
-    price: number;
-    date: Date;
-}
+export * from "./middlewares/current-user";
+export * from "./middlewares/error-handler";
+export * from "./middlewares/require-auth";
+export * from "./middlewares/validate-request";
 
-const sampleTicket: Ticket = {
-    id: '1',
-    title: 'UFC 312',
-    price: 100,
-    date: new Date()
-};
-
-console.log(sampleTicket);
-
-export default sampleTicket;
+export * from "./errors/bad-request-error";
+export * from "./errors/custom-error";
+export * from "./errors/database-connection-error";
+export * from "./errors/not-authorized-error";
+export * from "./errors/not-found-error";
+export * from "./errors/request-validation-error";
