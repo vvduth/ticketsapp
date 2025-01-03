@@ -22,5 +22,13 @@ build:
       sync:
         manual:
           - src: '**/*.js'
-            dest: .        
+            dest: .  
+    - image: vvduth/tickets
+      context: tickets
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.ts'
+            dest: .       
   
