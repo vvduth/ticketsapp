@@ -1,6 +1,5 @@
 import request from "supertest";
 import { app } from "../../app";
-
 const createTickets = () => {
   return request(app)
     .post("/api/tickets")
