@@ -11,7 +11,7 @@ const start = async () => {
     throw new Error("MONGO_URI must be defined");
   }
   try {
-    mongoose.connect(process.env.MONGO_URI,{});
+    await mongoose.connect(process.env.MONGO_URI,{});
     console.log("Connected to tickets MongoDB");
   } catch (error) {
     console.error(error);
