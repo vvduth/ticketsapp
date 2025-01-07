@@ -46,6 +46,5 @@ it("fetches orders for a particular user", async () => {
     .expect(200);
 
   // Make sure we only got the orders for User #2
-  console.log(res.body);
   expect(res.body.length).toEqual(2);
 });
