@@ -3,51 +3,50 @@ import { natsWrapper } from '../../../nats-wrapper';
 import { Ticket } from '../../../models/ticket';
 import mongoose from 'mongoose';
 import { TicketUpdatedEvent } from '@tikket4real/common';
-import e from 'express';
+
 const setup = async () => {
-    // Create an instance of the listener
+    // Create a listener
     const listener = new TicketUpdatedListener(natsWrapper.client);
-
-
-    // Create and save ticket
+  
+    // Create and save a ticket
     const ticket = Ticket.build({
-        id: new mongoose.Types.ObjectId().toHexString(),
-        title: 'concert',
-        price: 20
+      id: new mongoose.Types.ObjectId().toHexString(),
+      title: 'concert',
+      price: 20,
     });
-
     await ticket.save();
-
-    // createt a fake data obejct
-    const data:TicketUpdatedEvent["data"] = {
-        id: ticket.id,
-        version: ticket.version + 1,
-        title: 'movies',
-        price: 100,
-        userId: "123"
-    }
-
-    // create a fake message object
+  
+    // Create a fake data object
+    const data: TicketUpdatedEvent['data'] = {
+      id: ticket.id,
+      version: ticket.version + 1,
+      title: 'new concert',
+      price: 999,
+      userId: 'ablskdjf',
+    };
+  
+    // Create a fake msg object
     // @ts-ignore
     const msg: Message = {
-        ack: jest.fn()
-    }
-
+      ack: jest.fn(),
+    };
+  
     // return all of this stuff
-    return { listener, ticket, data, msg }
-}
-
-it('finds, updates, and saves a ticket', async () => {
-    const  { listener, ticket, data, msg } = await setup();
-
+    return { msg, data, ticket, listener };
+  };
+  
+  it('finds, updates, and saves a ticket', async () => {
+    const { msg, data, ticket, listener } = await setup();
+  
     await listener.onMessage(data, msg);
-
+  
     const updatedTicket = await Ticket.findById(ticket.id);
-
+  
     expect(updatedTicket!.title).toEqual(data.title);
     expect(updatedTicket!.price).toEqual(data.price);
     expect(updatedTicket!.version).toEqual(data.version);
-})
+  });
+  
 
 it('acks the message', async () => {
     const  { listener, ticket, data, msg } = await setup();
