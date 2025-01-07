@@ -47,7 +47,8 @@ router.post(
       ticket,
     });
     await order.save();
-    // Publish an event saying that an order was created
+
+    // TODO: Publish an event saying that an order was created
 
     res.status(201).send(order);
   }
