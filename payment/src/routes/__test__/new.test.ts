@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 import { Order } from "../../models/order";
 import { stripe } from "../../stripe";
 import { OrderStatus } from "@tikket4real/common";
-
+import { Payment } from "../../models/payment";
 // it("returns a 404 when purchasing an order that does not exist", async () => {
 //   const res = await request(app)
 //     .post("/api/payments")
@@ -90,6 +90,13 @@ it("returns a 201 with valid inputs", async () => {
   });
 
   expect(stripeCharge).toBeDefined();
+  expect(stripeCharge!.currency).toEqual("usd");
 
+  const payment = await Payment.findOne({
+    orderId: order.id,
+    stripeId: stripeCharge!.id,
+  })
+
+  expect(payment).not.toBeNull();
     
 });
