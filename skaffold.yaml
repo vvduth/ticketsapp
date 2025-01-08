@@ -47,8 +47,8 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
-    - image: vvduth/payments
-      context: payments
+    - image: vvduth/payment
+      context: payment
       docker:
         dockerfile: Dockerfile
       sync:
