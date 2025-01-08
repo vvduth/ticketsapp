@@ -15,10 +15,7 @@ const router = express.Router();
 router.post(
   "/api/payments",
   requireAuth,
-  [
-    body("token").not().isEmpty().withMessage("Token is required"),
-    body("orderId").not().isEmpty().withMessage("OrderId is required"),
-  ],
+  [body('token').not().isEmpty(), body('orderId').not().isEmpty()],
   validateRequest,
   async (req: Request, res: Response) => {
     const { token, orderId } = req.body;
@@ -43,7 +40,7 @@ router.post(
         source: token
     })
 
-    res.send({ success: true });
+    res.status(201).send({success: true});
   }
 );
 
