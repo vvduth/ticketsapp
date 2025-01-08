@@ -1,6 +1,6 @@
 import express, { Request, Response } from 'express';
 import { body } from 'express-validator';
-import {validateRequest,NotFoundError, requireAuth, NotAuthorizedError } from "@tikket4real/common"
+import {validateRequest,NotFoundError, requireAuth, NotAuthorizedError, BadRequestError } from "@tikket4real/common"
 import { Ticket } from '../models/ticket';
 import { TicketUpdatedPublisher } from '../events/publishers/ticket-update-publisher';
 import { natsWrapper } from '../nats-wrapper';
@@ -19,6 +19,10 @@ router.put('/api/tickets/:id', requireAuth,[
 
     if(ticket.userId !== req.currentUser!.id){
         throw new NotAuthorizedError();
+    }
+
+    if (ticket.orderId) {
+        throw new BadRequestError('Cannot edit a reserved ticket');
     }
 
     ticket.set({
