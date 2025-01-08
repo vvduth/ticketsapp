@@ -34,6 +34,7 @@
     "node-nats-streaming": "^0.3.2",
     "npm": "^11.0.0",
     "payment": "file:",
+    "stripe": "^17.5.0",
     "tickets": "file:",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.7.2"
