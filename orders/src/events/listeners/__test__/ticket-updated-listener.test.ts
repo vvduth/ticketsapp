@@ -20,7 +20,7 @@ const setup = async () => {
     const data: TicketUpdatedEvent['data'] = {
       id: ticket.id,
       version: ticket.version + 1,
-      title: 'new concert',
+      title: 'movies',
       price: 999,
       userId: 'ablskdjf',
     };
