@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import Router from "next/router";
 import useRequest from "../../hooks/use-request";
+
 const NewTicket = () => {
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
